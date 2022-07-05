@@ -9,6 +9,17 @@ export class CourseService {
     retrieveAll(): Course[] {
         return COURSES;
     }
+
+    retrieveById(id: number): Course {
+        return COURSES.find((course: Course) => course.id == id)!;
+    }
+
+    save(course: Course): void {
+        if (course.id) {
+            const index = COURSES.findIndex((courseIterator: Course) => courseIterator.id = course.id)
+            COURSES[index] = course;
+        }
+    }
 }
 
 let COURSES: Course[] = [
@@ -69,13 +80,24 @@ let COURSES: Course[] = [
     },
     {
         id: 6,
-        name: 'Angular: None',
-        releaseDate: 'November 30, 2019',
+        name: 'Angular: Animations duplicado',
+        releaseDate: 'November 26, 2019',
         description: 'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Animation.',
         duration: 80,
-        code: 'PWY-9381',
-        rating: 5,
-        price: 56.99,
-        imageUrl: ''
-    }
+        code: 'PWY-9389',
+        rating: 1.5,
+        price: 16.99,
+        imageUrl: '/assets/images/animations.png',
+    },
+    {
+        id: 7,
+        name: 'Angular: Forms ducplicado',
+        releaseDate: 'November 4, 2019',
+        description: 'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis no módulo de Forms.',
+        duration: 80,
+        code: 'DWQ-3412',
+        rating: 4.5,
+        price: 24.99,
+        imageUrl: '/assets/images/forms.png',
+    },
 ];
